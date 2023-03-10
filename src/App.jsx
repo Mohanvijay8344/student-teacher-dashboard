@@ -657,7 +657,7 @@ function Home() {
       <h1>Sign in As</h1>
       <button onClick={() => navigate("/teacher-list")}>Teacher</button>
       <button onClick={() => navigate("/student-list")}>Student</button>
-      <button onClick={() => navigate("/student-list")}>Add Teacher</button>
+      <button onClick={() => navigate("/teacher-list/add-teacher")}>Add Teacher</button>
       <button onClick={() => navigate("/student-list/add-student")}>Add Student</button>
     </div>
   );
