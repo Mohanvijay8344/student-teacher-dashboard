@@ -650,7 +650,6 @@ function App() {
   );
 }
 
-
 function Home() {
   const navigate = useNavigate();
   return (
