@@ -1,9 +1,22 @@
 import { TeacherList } from "./TeacherList";
+import { useEffect, useState } from "react";
 
-export function Teacher({ teacher, setTeacher }) {
+
+export function Teacher() {
+  const [teacher, setTeacher] = useState([]);
+ 
+  const get = () => {
+    fetch("https://63d75fbcafbba6b7c93beb74.mockapi.io/Teachers")
+    .then((res)=>res.json())
+    .then((tea)=> setTeacher(tea))
+  }
+    
+    useEffect(() => get(),[]);
+
   const remove = (id) => {
-    const copy = teacher.filter((del) => del.id !== id);
-    setTeacher(copy);
+    fetch(`https://63d75fbcafbba6b7c93beb74.mockapi.io/Teachers/${id}`, {
+      method: "DELETE",
+    }).then(() => get())
   };
   return (
     <div className="containermap">

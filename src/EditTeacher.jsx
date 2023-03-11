@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export function EditTeacher({ teacher, setTeacher }) {
+export function EditTeacher() {
   const { id } = useParams();
-  const teachers = teacher[id];
+  const [teachers, setTeacher] = useState({});
+  useEffect(() => {
+    fetch(`https://63d75fbcafbba6b7c93beb74.mockapi.io/Teachers/${id}`)
+    .then((res)=>res.json())
+    .then((tea)=> setTeacher(tea))
+  },[]);
 
   const navigate = useNavigate();
   const [name, setName] = useState();

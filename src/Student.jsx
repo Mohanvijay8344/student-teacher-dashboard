@@ -1,9 +1,21 @@
 import { StudentList } from "./StudentList";
+import { useEffect, useState } from "react";
 
-export function Student({ setStudent, student }) {
+export function Student() {
+  const [student, setStudent] = useState([])
+  const get = () => {
+    fetch("https://63d75fbcafbba6b7c93beb74.mockapi.io/students")
+    .then((res) => res.json())
+    .then((stu) => setStudent(stu))
+  }
+  
+
+    useEffect(() => get(),[]);
+
   const remove = (id) => {
-    const copy = student.filter((del) => del.id !== id);
-    setStudent(copy);
+    fetch(`https://63d75fbcafbba6b7c93beb74.mockapi.io/students/${id}`, {
+      method: "DELETE",
+    }).then(() => get());
   };
   return (
     <div className="containermap">

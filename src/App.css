@@ -122,10 +122,31 @@ img{
 }
 
 .Add{
+  width: 100vh;
+  height: 100vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(#7b4397, #dc2430);
+
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
   justify-content: center;
+
+}
+.Add button{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  background-color: #faaca8;
 
 }

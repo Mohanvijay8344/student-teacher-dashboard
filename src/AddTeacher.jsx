@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 
-export function AddTeacher({ teacher, setTeacher }) {
+export function AddTeacher() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
@@ -14,6 +14,32 @@ export function AddTeacher({ teacher, setTeacher }) {
   const [zip, setZip] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+
+  const [teacher, setTeacher] = useState("");
+
+  const AddTeacher = () => {
+    const newStud = {
+      name: name,
+      gender: gender,
+      address: address,
+      street: street,
+      city: city,
+      state: state,
+      country: country,
+      zip: zip,
+      email: email,
+      phone: phone,
+    };
+    fetch("https://63d75fbcafbba6b7c93beb74.mockapi.io/Teachers",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newStud),
+    })
+    navigate("/");
+  }
+
   return (
     <div className="Add">
       <TextField id="outlined-basic" label="Name" variant="outlined"
@@ -77,22 +103,7 @@ export function AddTeacher({ teacher, setTeacher }) {
         onChange={(event) => setPhone(event.target.value)}
       />
       <button
-        onClick={() => {
-          const newStud = {
-            name: name,
-            gender: gender,
-            address: address,
-            street: street,
-            city: city,
-            state: state,
-            country: country,
-            zip: zip,
-            email: email,
-            phone: phone,
-          };
-          setTeacher([...teacher, newStud]);
-          navigate("/teacher-list");
-        }}
+        onClick={()=>AddTeacher()}
       >
         Add
       </button>
